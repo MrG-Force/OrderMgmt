@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using OrderMgmtSystem.Views;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace OrderMgmtSystem
 {
@@ -23,6 +12,13 @@ namespace OrderMgmtSystem
         public MainWindow()
         {
             InitializeComponent();
+            Switcher.mainWindow = this;
+            Switcher.Switch(new OrdersMainView());
+        }
+
+        internal void Navigate(UserControl nextPage)
+        {
+            Content = nextPage;
         }
     }
 }
