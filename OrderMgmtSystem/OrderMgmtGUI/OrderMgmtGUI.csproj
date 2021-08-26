@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\Icon.png" />
+    <None Remove="Images\LogoFinal.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\Icon.png" />
+    <Resource Include="Images\LogoFinal.png" />
+  </ItemGroup>
+
+</Project>
