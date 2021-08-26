@@ -54,7 +54,7 @@
               Padding="3"
               Margin="0,15,0,0"
               FontWeight="Bold"
-               />
+              Click="BackToOrder_Click" />
     </StackPanel>
   </Grid>
 </UserControl>

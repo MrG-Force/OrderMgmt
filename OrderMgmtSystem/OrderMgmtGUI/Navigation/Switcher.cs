@@ -9,7 +9,7 @@ namespace OrderMgmtGUI.Navigation
 
         public static void Switch(UserControl newPage)
         {
-            //mainWindow.Navigate(newPage);
+            mainWindow.Navigate(newPage);
         }
     }
 }

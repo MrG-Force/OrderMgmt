@@ -1,4 +1,7 @@
-﻿using System.Windows;
+﻿using OrderMgmtGUI.Navigation;
+using OrderMgmtGUI.Views;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace OrderMgmtGUI
 {
@@ -10,6 +13,13 @@ namespace OrderMgmtGUI
         public MainWindow()
         {
             InitializeComponent();
+            Switcher.mainWindow = this;
+            Switcher.Switch(new OrdersView());
+        }
+
+        internal void Navigate(UserControl nextPage)
+        {
+            Content = nextPage;
         }
     }
 }

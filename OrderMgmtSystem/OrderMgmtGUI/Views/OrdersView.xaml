@@ -53,7 +53,7 @@
               Style="{StaticResource GreenGoButton}"
               Content="New order"
               Margin="0,15"
-               />
+              Click="NewOrderButton_Click" />
       <Button x:Name="ExitApp"
               Content="Exit"
               Height="25"
@@ -61,7 +61,7 @@
               Padding="3"
               Margin="0,15,0,0"
               FontWeight="Bold"
-               />
+              Click="ExitApp_Click" />
     </StackPanel>
   </Grid>
 </UserControl>
