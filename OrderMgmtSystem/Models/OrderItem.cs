@@ -2,13 +2,22 @@
 {
     public class OrderItem
     {
-        public OrderItem(int OrderId, int ItemId)
+        public OrderItem()
+        { }
+        public OrderItem(int orderId, string itemId)
         {
-            OrderHeaderId = OrderId;
-            StockItemId = ItemId;
+            OrderHeaderId = orderId;
+            StockItemId = itemId;
+        }
+        public OrderItem(int orderId, StockItem stockItem)
+        {
+            OrderHeaderId = orderId;
+            StockItemId = stockItem.Sku;
+            Price = stockItem.Price;
+            Description = stockItem.Name;
         }
         public int OrderHeaderId { get; set; }
-        public int StockItemId { get; set; }
+        public string StockItemId { get; set; }
         public string Description { get; set; }
         public double Price { get; set; }
         public int Quantity { get; set; }

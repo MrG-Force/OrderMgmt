@@ -9,7 +9,7 @@ namespace DataAccess
 {
     public interface IProvideData
     {
-        public List<Order> GetOrders();
+        public List<Order> GetOrders(int total);
         public List<StockItem> GetStockItems();
 
     }

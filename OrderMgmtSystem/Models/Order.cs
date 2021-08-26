@@ -14,12 +14,14 @@ namespace Models
         //--- ctor ---
         
         /// <summary>
-        /// Initialize the Order with the creation DateTime and sets the OrderState to New.
+        /// Initializes the Order with the creation DateTime and sets the OrderState to New.
         /// </summary>
-        public Order()
+        public Order(int id)
         {
-            DateTime DateTime = DateTime.Now;
+            _orderItems = new();
+            DateTime = DateTime.Now;
             OrderStateId = 1;
+            Id = id;
         }
 
         //--- props ---
