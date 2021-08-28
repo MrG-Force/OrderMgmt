@@ -8,6 +8,7 @@ namespace OrderMgmtSystem.Views
     /// </summary>
     public partial class OrdersMainView : UserControl
     {
+        
         public OrdersMainView()
         {
             InitializeComponent();

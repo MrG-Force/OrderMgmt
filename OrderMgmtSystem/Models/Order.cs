@@ -10,24 +10,25 @@ namespace Models
     {
         //--- fields ---
         private List<OrderItem> _orderItems;
-
+        private static int _id = 1000;
         //--- ctor ---
-        
+
         /// <summary>
         /// Initializes the Order with the creation DateTime and sets the OrderState to New.
         /// </summary>
-        public Order(int id)
+        public Order()
         {
             _orderItems = new();
             DateTime = DateTime.Now;
             OrderStateId = 1;
-            Id = id;
+            Id = _id++;
         }
 
         //--- props ---
-        public int Id { get; set; }
+        public int Id { get; }
         public DateTime DateTime { get; set; }
         public int OrderStateId { get; set; }
+        public string OrderStatus => Enum.GetName(typeof(OrderState), OrderStateId);
         public double Total
         {
             get
@@ -40,6 +41,7 @@ namespace Models
                 return total;
             }
         }
+        public List<OrderItem> OrderItems => _orderItems;
         public int ItemsCount => _orderItems.Count;
         //--- enum ---
         public enum OrderState { New = 1, Pending = 2, Rejected = 3, Complete = 4 };
@@ -63,15 +65,6 @@ namespace Models
         {
             OrderItem item = _orderItems.Find(i => i.StockItemId.Equals(id));
             _orderItems.Remove(item);
-        }
-
-        /// <summary>
-        /// Provides a list with all the items currently in the order.
-        /// </summary>
-        /// <returns></returns>
-        public List<OrderItem> GetItemsInOrder()
-        {
-            return _orderItems;
         }
 
         /// <summary>

@@ -1,12 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DataAccessDummy\DataAccessDummy.csproj" />
     <ProjectReference Include="..\DataAccess\DataAccess.csproj" />
-    <ProjectReference Include="..\Models\OrderMgmt.Models.csproj" />
   </ItemGroup>
 
 </Project>

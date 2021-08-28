@@ -26,8 +26,6 @@ namespace OrderMgmtSystem.Views
         private void AddItem_Click(object sender, RoutedEventArgs e)
         {
             Switcher.Switch(new AddItemView());
-            
-            
         }
     }
 }

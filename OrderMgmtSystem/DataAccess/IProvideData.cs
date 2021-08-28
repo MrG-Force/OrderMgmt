@@ -9,6 +9,8 @@ namespace DataAccess
 {
     public interface IProvideData
     {
+        private static List<Order> _orders;
+        public List<Order> Orders => _orders;
         public List<Order> GetOrders(int total);
         public List<StockItem> GetStockItems();
 

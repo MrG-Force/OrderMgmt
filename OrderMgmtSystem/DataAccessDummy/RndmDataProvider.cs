@@ -8,10 +8,16 @@ namespace DataAccessDummy
     public class RndmDataProvider : IProvideData
     {
         private List<StockItem> _stockItems;
+        private static List<Order> _orders;
         public RndmDataProvider()
         {
             _stockItems = GetStockItems();
+            if (_orders == null)
+            {
+                _orders = GetOrders();
+            }
         }
+        public List<Order> Orders { get => _orders; }
 
         Random random = new Random();
         // Stock Items
@@ -19,38 +25,10 @@ namespace DataAccessDummy
         double[] prices = new double[] { 56.90, 34.80, 124.80, 69.99, 78.60, 210.80, 78.99, 46.79, 67.89, 54.40 };
         bool[] inStock = new bool[] { false, true, true, true, true, };
         string[] skuLetters = new string[] { "A", "C", "K", "L", "Y", "U", "S", "X", "O", "P" };
-
-        // Orders
-
-
-        //
+        
         private T GetRandomItem<T>(T[] data)
         {
             return data[random.Next(0, data.Length)];
-        }
-        public List<Order> GetOrders(int total = 10)
-        {
-            List<Order> orders = new List<Order>(total);
-            for (int i = 0; i < total; i++)
-            {
-                orders.Add(GetOrder(i + 1000));
-            }
-
-            return orders;
-        }
-
-        private Order GetOrder(int orderId)
-        {
-            Order order = new Order(orderId);
-            int itemsInOrder = random.Next(1, 11);
-            int[] indxs = GetRandomNumbers(itemsInOrder, 10);
-            for (int i = 0; i < itemsInOrder; i++)
-            {
-                OrderItem item = new OrderItem(orderId, _stockItems[indxs[i]]);
-                item.Quantity = random.Next(1, 20);
-                order.AddItem(item);  
-            }
-            return order;
         }
 
         public List<StockItem> GetStockItems()
@@ -69,6 +47,33 @@ namespace DataAccessDummy
                 stockItems.Add(item);
             }
             return stockItems;
+        }
+
+        // Orders
+
+        public List<Order> GetOrders(int total = 10)
+        {
+            List<Order> orders = new List<Order>(total);
+            for (int i = 0; i < total; i++)
+            {
+                orders.Add(GetOrder());
+            }
+
+            return orders;
+        }
+
+        private Order GetOrder()
+        {
+            Order order = new Order();
+            int itemsInOrder = random.Next(1, 11);
+            int[] indxs = GetRandomNumbers(itemsInOrder, 10);
+            for (int i = 0; i < itemsInOrder; i++)
+            {
+                OrderItem item = new OrderItem(order.Id, _stockItems[indxs[i]]);
+                item.Quantity = random.Next(1, 20);
+                order.AddItem(item);  
+            }
+            return order;
         }
 
         public int[] GetRandomNumbers(int howMany, int maxValue)

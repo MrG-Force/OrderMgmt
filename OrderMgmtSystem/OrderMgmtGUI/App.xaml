@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:OrderMgmtGUI"
              StartupUri="Views/MainWindow.xaml">
   <Application.Resources>
+    <!--#region Buttons-->
     <Style TargetType="Button"
            x:Key="GreenGoButton">
       <Setter Property="Width"
@@ -21,10 +22,81 @@
       <Setter Property="FontWeight"
               Value="Bold" />
     </Style>
+    <!--#endregion-->
+    <!--#region Grids-->
     <Style TargetType="Grid"
            x:Key="CommonGrid">
       <Setter Property="Background"
               Value="#FFF2F5F2" />
     </Style>
+    <!--#endregion-->
+    <!--#region DataGrids-->
+    <!--DataGrid-->
+    <Style x:Key="DataGridStyle"
+           TargetType="DataGrid">
+      <Setter Property="ColumnHeaderStyle"
+              Value="{DynamicResource StyleColumnHeader}" />
+      <Setter Property="BorderBrush"
+              Value="#D9C55F" />
+      <Setter Property="BorderThickness"
+              Value="2" />
+      <Setter Property="IsReadOnly"
+              Value="True" />
+      <Setter Property="AutoGenerateColumns"
+              Value="False" />
+      <Setter Property="CanUserAddRows"
+              Value="False" />
+      <Setter Property="AreRowDetailsFrozen"
+              Value="True" />
+    </Style>
+    <!--DataGridColumnHeaders-->
+    <Style TargetType="DataGridColumnHeader"
+           x:Key="StyleColumnHeader">
+      <Setter Property="Height"
+              Value="35" />
+      <Setter Property="Background"
+              Value="#082621" />
+      <Setter Property="Foreground"
+              Value="#D9C55F" />
+      <Setter Property="BorderBrush"
+              Value="#D9C55F" />
+      <Setter Property="BorderThickness"
+              Value="1" />
+      <Setter Property="HorizontalContentAlignment"
+              Value="Center" />
+      <Setter Property="ContentTemplate">
+        <Setter.Value>
+          <DataTemplate>
+            <TextBlock TextWrapping="Wrap"
+                       Text="{Binding}" />
+          </DataTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+
+    <!--#endregion-->
+    <!--#region TextBox Order State-->
+    <Style TargetType="TextBox"
+           x:Key="OrderStateTextBox">
+      <Style.Triggers>
+        <DataTrigger Binding="{Binding Path=Order.OrderStatus}"
+                     Value="New">
+          <Setter Property="Foreground"
+                  Value="Green" />
+        </DataTrigger>
+        <DataTrigger Binding="{Binding Path=Order.Status}"
+                     Value="Pending">
+          <Setter Property="Foreground"
+                  Value="Blue" />
+        </DataTrigger>
+        <DataTrigger Binding="{Binding Path=Order.Status}"
+                     Value="Rejected">
+          <Setter Property="Foreground"
+                  Value="DarkRed" />
+        </DataTrigger>
+      </Style.Triggers>
+    </Style>
+    <!--#endregion-->
+
   </Application.Resources>
 </Application>

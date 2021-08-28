@@ -6,8 +6,11 @@
         xmlns:local="clr-namespace:OrderMgmtGUI.Views"
         xmlns:controls="clr-namespace:OrderMgmtGUI.Controls"
         mc:Ignorable="d"
-        Title="Order [Order ID] Details" Height="450" Width="600"
-        MinHeight="500" MinWidth="440" Icon="/Images/Icon.png">
+        Height="450"
+        Width="600"
+        MinHeight="500"
+        MinWidth="440"
+        Icon="/Images/Icon.png">
   <Grid Style="{StaticResource CommonGrid}">
     <Grid.RowDefinitions>
       <RowDefinition Height="auto" />
@@ -50,7 +53,9 @@
         <TextBox x:Name="OrderNumTxtBox"
                  Grid.Row="0"
                  Grid.Column="1"
-                 IsEnabled="False" />
+                 IsReadOnly="True"
+                 VerticalContentAlignment="Center"
+                 Text="{Binding Path=Order.Id, Mode=OneWay}" />
         <Label Content="Date &amp; Time created:"
                Grid.Row="0"
                Grid.Column="2"
@@ -58,13 +63,19 @@
         <TextBox x:Name="OrderDateTimeTxtBox"
                  Grid.Row="0"
                  Grid.Column="3"
-                 IsEnabled="False" />
+                 IsReadOnly="True"
+                 VerticalContentAlignment="Center"
+                 Text="{Binding Path=Order.DateTime, Mode=OneWay}" />
         <Label Content="Order state: "
                Grid.Row="2" />
         <TextBox x:Name="OrderStateTxtBox"
                  Grid.Row="2"
                  Grid.Column="1"
-                 IsEnabled="False" />
+                 IsReadOnly="True"
+                 VerticalContentAlignment="Center"
+                 Text="{Binding Path=Order.OrderStatus, Mode=OneWay}"
+                 Style="{DynamicResource OrderStateTextBox}">
+        </TextBox>
         <Label Content="Total"
                FontWeight="Bold"
                Grid.Row="2"
@@ -73,7 +84,9 @@
         <TextBox x:Name="OrderTotalTxtBox"
                  Grid.Row="2"
                  Grid.Column="3"
-                 IsEnabled="False" />
+                 IsReadOnly="True"
+                 VerticalContentAlignment="Center"
+                 Text="{Binding Path=Order.Total, StringFormat={}{0:C}, Mode=OneWay}"/>
       </Grid>
     </GroupBox>
     <Label Content="Items in this order:"
@@ -82,9 +95,21 @@
            FontSize="15"
            Margin="0" />
     <DataGrid x:Name="OrderItemsDataGrid"
+              ItemsSource="{Binding Path=Order.OrderItems}"
+              Style="{DynamicResource DataGridStyle}"
               Grid.Row="4"
               Grid.Column="1"
-              Grid.ColumnSpan="2" />
+              Grid.ColumnSpan="2">
+      <DataGrid.Columns>
+        <DataGridTextColumn Header="SKU" Binding="{Binding StockItemId}" MinWidth="60"/>
+        <DataGridTextColumn Header="Product description" Binding="{Binding Description}" MinWidth="150" />
+        <DataGridTextColumn Header="Price" Binding="{Binding Price, StringFormat=C}" MinWidth="80"/>
+        <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" MinWidth="60"/>
+        <DataGridTextColumn Header="Total" Binding="{Binding Total, StringFormat=C}" Width="*" />
+
+      </DataGrid.Columns>
+    </DataGrid>
+
     <Grid x:Name="NewOrderControls"
           Grid.Row="4"
           Grid.Column="3">
@@ -125,10 +150,7 @@
               Style="{StaticResource GreenGoButton}"
               Content="Back to orders"
               Grid.Row="4"
-              Margin="10,0,0,0"
-               />
-
-</Grid>
-
+              Margin="10,0,0,0" />
     </Grid>
+  </Grid>
 </Window>

@@ -40,7 +40,8 @@
                  FontSize="25"
                  HorizontalAlignment="Center" />
     </Border>
-    <DataGrid Grid.Row="4"
+    <DataGrid x:Name="Orders" 
+              Grid.Row="4"
               Grid.RowSpan="2"
               Grid.Column="1"
               Grid.ColumnSpan="2">

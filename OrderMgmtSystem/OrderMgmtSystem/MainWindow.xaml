@@ -12,6 +12,6 @@
         Width="600"
         MinHeight="500"
         MinWidth="440"
-        Icon="/Images/Icon.png"
+        Icon="Images/Icon.png"
         Background="#FFC9C9C9">
 </Window>

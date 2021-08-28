@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:OrderMgmtGUI.Views"
              xmlns:controls="clr-namespace:OrderMgmtGUI.Controls"
+             xmlns:controls1="clr-namespace:OrderMgmtGUI.Wpf.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="600">
     <!--#region Page Layout-->
@@ -39,12 +40,17 @@
                  FontSize="25"
                  HorizontalAlignment="Center" />
     </Border>
-    <DataGrid x:Name="Orders"
+    <controls1:OrdersViewDataGrid Grid.Row="4"
+                                 Grid.RowSpan="2"
+                                 Grid.Column="1"
+                                 Grid.ColumnSpan="2" 
+                                  MinWidth="440"/>
+    <!--<DataGrid x:Name="Orders"
               Grid.Row="4"
               Grid.RowSpan="2"
               Grid.Column="1"
               Grid.ColumnSpan="2">
-    </DataGrid>
+    </DataGrid>-->
     <StackPanel Grid.Row="4"
                 Grid.Column="3"
                 Margin="15 0 5 0"
